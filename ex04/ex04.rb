@@ -31,10 +31,11 @@ def spellcheck(word, one, two)
   two
 end
 
-f = File.open(ARGV[0])
-entries = f.readline.chomp.to_i
-entries.times do |cnt|
-  line = f.readline.chomp
-  word, one, two = f.readline.chomp, f.readline.chomp, f.readline.chomp
-  puts spellcheck(word, one, two)
+File.open(ARGV[0]) do |file|
+  entries = file.readline.chomp.to_i
+  entries.times do |cnt|
+    line = file.readline.chomp
+    word, one, two = file.readline.chomp, file.readline.chomp, file.readline.chomp
+    puts spellcheck(word, one, two)
+  end
 end
